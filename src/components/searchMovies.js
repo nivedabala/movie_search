@@ -1,13 +1,5 @@
-
-
 import React, {useState} from "react";
-import Alert from "./alert"
-import { ToastContainer, toast } from 'react-toastify';
 import MovieCard from "./movieCard";
-
-const errorMsg = () => {
-    toast.error("Invalid input");
-};
 
 function SearchMovies(){
     
@@ -24,16 +16,10 @@ function SearchMovies(){
             const res = await fetch(url);
             const data = await res.json();
 
-            if (typeof(data)==undefined){
-                errorMsg();
-
-            } else {
-                console.log(data.results);
-                setMovies(data.results);
-            }
+            setMovies(data.results);
+            
 
         } catch(error){
-            errorMsg();
             console.error(error);
         }
 
